@@ -22,6 +22,11 @@ public class CarnetController {
 			new Carnet(3, Civilite.MONSIEUR, "Lynch", "David", "1946-01-20", "0202020202", "423 Fire Terrace", "59801",
 					"Missoula")));
     // Comment From getALL method
+
+
+	// other comment
+	// And other comment
+
 	@GetMapping("/carnets")
 	public List<Carnet> getAllRest() {
 		return listeCarnets;
