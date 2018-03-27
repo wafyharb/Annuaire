@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Formulaire</title>
+<style>
+label{
+display: inline-block;
+width: 150px;
+}
+</style>
+</head>
+<body>
+  <form action="/formulaire" method="post">
+   
+   <label> Civilite</label><input name='civilite'/><br>
+   <label> Nom</label><input type="text" name= 'nom'/><br>
+   <label> Prenom</label><input type="text"name= 'prenom'/><br>
+   <label> Date de naissance</label><input type="text" name= 'dateDeNaissance' /><br>
+   <label> Numero de telephone</label><input type="text" name= 'tel'/><br>
+   <label> Email</label><input type="text" name= 'email'/><br>
+   <label> Code de postale</label><input type="text" name='cp'/><br>
+   <label> Ville</label><input type="text" name='ville'/> <br>
+   <input type="submit" value="envoyer">
+  </form>
+</body>
+</html>

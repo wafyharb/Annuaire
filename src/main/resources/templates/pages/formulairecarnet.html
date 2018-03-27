@@ -4,24 +4,40 @@
 <meta charset="ISO-8859-1">
 <title>Formulaire</title>
 <style>
-label{
-display: inline-block;
-width: 150px;
+label {
+	display: inline-block;
+	width: 150px;
+}
+p{
+color: red;
 }
 </style>
 </head>
 <body>
-  <form action="/formulaire" method="post">
-   
-   <label> Civilite</label><input name='civilite'/><br>
-   <label> Nom</label><input type="text" name= 'nom'/><br>
-   <label> Prenom</label><input type="text"name= 'prenom'/><br>
-   <label> Date de naissance</label><input type="text" name= 'dateDeNaissance' /><br>
-   <label> Numero de telephone</label><input type="text" name= 'tel'/><br>
-   <label> Email</label><input type="text" name= 'email'/><br>
-   <label> Code de postale</label><input type="text" name='cp'/><br>
-   <label> Ville</label><input type="text" name='ville'/> <br>
-   <input type="submit" value="envoyer">
-  </form>
+	<form th:action="@{/formulaire}" th:object="${carnet}" method="post">
+		<label for="m"> Monsieur</label> <input type="radio" id="m"
+			th:field="*{civilite}" value="MONSIEUR" checked /> <label for="mme">
+			Madame</label> <input type="radio" id="mme" th:field="*{civilite}"
+			value="MADAME" /><br>
+		<p th:if="${#fields.hasErrors('civilite')}" th:errors="*{civilite}"></p>
+		<label> Nom</label><input type="text" th:field="*{nom}" /><br>
+		<p th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></p>
+		<label> Prenom</label><input type="text" th:field="*{prenom}" /><br>
+		<p th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></p>
+		<label> Date de naissance</label><input type="text"
+			th:field="*{dateDeNaissance}" /><br>
+		<p th:if="${#fields.hasErrors('dateDeNaissance')}"
+			th:errors="*{dateDeNaissance}"></p>
+		<label> Numero de telephone</label><input type="text"
+			th:field="*{tel}" /><br>
+		<p th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}"></p>
+		<label> Email</label><input type="text" th:field="*{email}" /><br>
+		<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+		<label> Code de postale</label><input type="text" th:field="*{cp}" /><br>
+		<p th:if="${#fields.hasErrors('cp')}" th:errors="*{cp}"></p>
+		<label> Ville</label><input type="text" th:field="*{ville}" /> <br>
+		<p th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></p>
+		<input type="submit" value="envoyer">
+	</form>
 </body>
 </html>
