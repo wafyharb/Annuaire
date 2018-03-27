@@ -1,9 +1,10 @@
-package com.example.annuaire.carnet;
+package com.example.annuaire.controllers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +16,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.annuaire.entities.Carnet;
+import com.example.annuaire.entities.Civilite;
+import com.example.annuaire.services.CarnetService;
+
 @RestController
 public class CarnetController {
-
+	@Autowired
+	private CarnetService cs;
 	List<Carnet> listeCarnets = new ArrayList<Carnet>(Arrays.asList(
 			new Carnet(1, Civilite.MONSIEUR, "Besson", "Luc", "1959-13-18", "0000000000", "5 avenue de l'Element",
 					"75015", "Paris"),
@@ -55,6 +61,17 @@ public class CarnetController {
 	@RequestMapping(value = "/carnets/{id}", method = RequestMethod.DELETE)
 	public void DelById(@PathVariable Integer id) {
 		this.listeCarnets.removeIf(p -> ((Integer) p.getId()).equals(id));
+		
+		/*
+		Iterator<Carnet> it= listeCarnets.iterator();
+		while(it.hasNext()) {
+			Carnet carnet= it.next();
+			if(((Integer)carnet.getId()).equals(id))
+			{
+				it.remove();
+			}
+			
+		}*/
 	}
 
 	// @RequestMapping(value="/carnets") en brut
@@ -75,7 +92,11 @@ public class CarnetController {
 		this.listeCarnets.add(carnet);
 		return new ModelAndView("pages/carnetResultAjout.html").addObject("carnet", carnet);
 	}
-
+	@GetMapping(value = "/")
+	public ModelAndView index() {
+		ModelAndView mav = new ModelAndView("index");
+		return mav;
+	}
 	@GetMapping(value = "/formulaire")
 	public ModelAndView form() {
 		ModelAndView mav = new ModelAndView("pages/formulairecarnet");
@@ -83,7 +104,7 @@ public class CarnetController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/modifier/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/carnets/{id}", method = RequestMethod.PUT)
 	public Carnet update(@RequestBody Carnet carnet, @PathVariable Integer id) {
 		for (Integer i = 0; i < this.listeCarnets.size(); i++) {
 			Carnet c = this.listeCarnets.get(i);

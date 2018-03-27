@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class home {
-	@GetMapping("/")// root 
+	/*@GetMapping("/")// root 
 	@ResponseBody// ce que Je te renvoie c'est vraiment ce qui va l'afficher
 	public String index() {
 		String s = "<h1>Hello From index Method<h1>";
@@ -23,5 +23,5 @@ public class home {
 		//System.out.println(name);
 		model.addAttribute("name", name);
 		return "index";
-	}
+	}*/
 }

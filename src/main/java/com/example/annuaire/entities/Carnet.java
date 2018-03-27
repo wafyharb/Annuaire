@@ -1,9 +1,10 @@
-package com.example.annuaire.carnet;
+package com.example.annuaire.entities;
 
+import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-
+@Entity
 public class Carnet {
 
 	private int id;
@@ -16,6 +17,8 @@ public class Carnet {
 	// @NotBlank
 	@Pattern(regexp = "(?i)[a-z\\- ]{2,100}", message = "{com.formation.annuaire.constraint.nom.message}")
 	private String prenom;
+	// @Pattern(regexp = "^([0-9]{2})/([0-9]{2})/([0-9]{4})$", message =
+	// "{com.formation.annuaire.constraint.tel.message}")
 	@NotBlank
 	private String dateDeNaissance;
 	@Pattern(regexp = "^(\\+[0-9]|[0]{2})[0-9] {6,14}(?:x.+)?$", message = "{com.formation.annuaire.constraint.tel.message}")

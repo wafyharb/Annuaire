@@ -1,4 +1,4 @@
-package com.example.annuaire;
+package com.example.annuaire.services;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
