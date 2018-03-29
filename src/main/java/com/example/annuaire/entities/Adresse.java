@@ -16,7 +16,7 @@ import javax.persistence.ManyToMany;
 public class Adresse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // JPA qui s'occupe
-	private Integer id;
+	private Long id;
 	@Column(length = 6)
 	private Integer number;
 	@Column(length = 25)
@@ -26,15 +26,14 @@ public class Adresse {
 	@Column(length = 25)
 	private String town;
 	
-	@ManyToMany(mappedBy="adresses")//mapping avec le nom de la collection correspondante
-	
+	@ManyToMany(mappedBy="adresses")//mapping avec le nom de la collection correspondante	
 	private List<Carnet> carnets;
 
 	public Adresse() {
 		carnets = new ArrayList<Carnet>();
 	}
 
-	public Adresse(Integer id, Integer number, String street, Integer postcode, String town, List<Carnet> carnets) {
+	public Adresse(Long id, Integer number, String street, Integer postcode, String town, List<Carnet> carnets) {
 		super();
 		carnets = new ArrayList<Carnet>();
 		this.id = id;
@@ -45,11 +44,11 @@ public class Adresse {
 		this.carnets = carnets;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

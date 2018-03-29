@@ -7,10 +7,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -60,12 +61,16 @@ public class Carnet {
 	@Column(length = 50)
 	private String ville;
 	
-	@ManyToMany
+	@ManyToMany   	
 	private List<Adresse> adresses;
+	
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy ="owner")
+    private List<Compte> comptes;
+    
 	public Carnet() {
 		adresses= new ArrayList<Adresse>();
 	}
-
 	public Carnet(Long id, Civilite civilite, String nom, String prenom, String dateDeNaissance, String tel,
 			String email, String cp, String ville) {
 		super();
