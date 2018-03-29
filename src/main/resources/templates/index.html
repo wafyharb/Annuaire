@@ -10,7 +10,7 @@ $(document).ready(function() {
     $("#locales").change(function () {
         var selectedOption = $('#locales').val();
         if (selectedOption != ''){
-            window.location.replace('international?lang=' + selectedOption);
+            window.location.replace('locale?lang=' + selectedOption);
         }
     });
 });
@@ -25,9 +25,9 @@ $(document).ready(function() {
 	</select>
 	<h1 th:text="#{bienvenue}"></h1>
 	<h2 th:text="${name}">Hello there is no parameters</h2>
-	<a th:href="@{/carnetshtml}" th:text="#{liste}" > Liste Carnets</a>
-	<a th:href="@{/carnet}" th:text="#{ajout}">Ajouter un carnet</a>
-	<a th:href="@{/carnet}" th:text="#{modif}">Modifier un carnet</a>
-	<a th:href="@{/carnet}" th:text="#{supp}" >Supprimer un carnet</a>
+	<a th:href="@{/carnetshtml}" th:text="#{liste}" > </a>
+	<a th:href="@{/carnet}" th:text="#{ajout}"></a>
+	<a th:href="@{/carnet}" th:text="#{modif}"></a>
+	<a th:href="@{/carnet}" th:text="#{supp}" ></a>
 </body>
 </html>
