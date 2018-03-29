@@ -30,9 +30,9 @@ public class Compte {
 		this.owner = owner;
 	}
 
-	public Compte(Long id, Integer numero, String nom) {
-		super();
-		this.id = id;
+	public Compte( Integer numero, String nom) {
+		
+		
 		this.numero = numero;
 		this.nom = nom;
 	}

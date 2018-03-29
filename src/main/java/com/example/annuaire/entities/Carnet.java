@@ -71,6 +71,12 @@ public class Carnet {
 	public Carnet() {
 		adresses= new ArrayList<Adresse>();
 	}
+	public List<Compte> getComptes() {
+		return comptes;
+	}
+	public void setComptes(List<Compte> comptes) {
+		this.comptes = comptes;
+	}
 	public Carnet(Long id, Civilite civilite, String nom, String prenom, String dateDeNaissance, String tel,
 			String email, String cp, String ville) {
 		super();
