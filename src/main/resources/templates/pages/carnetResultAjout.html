@@ -18,9 +18,11 @@
 			<li th:text="${carnet.ville}"></li>
 		</ul>
 	</div>
-	    <a th:href="@{/carnetshtml}">Liste Carnets</a>
-		<a th:href="@{/formulaire}">Ajouter un carnet</a>
-		<a th:href="@{/carnets}">Supprimer un carnet</a>
-		
+	<a th:href="@{/carnetshtml}">Liste Carnets</a>
+	<a th:href="@{/carnet}">Ajouter un carnet</a>
+	<a th:href="@{PUT /carnet}">Modifier un carnet</a>
+	<a th:href="@{DELETE /carnet}">Supprimer un carnet</a>
+
+	
 </body>
 </html>

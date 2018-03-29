@@ -1,43 +1,62 @@
 package com.example.annuaire.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 @Entity
+@Table(name="personne")
 public class Carnet {
-
-	private int id;
-	@NotNull // @NotNull(message="Il faut remplir les champs vides")
+    @Id
+    @GeneratedValue// auto incrementation par hibernate
+	private Long id;
+   @Enumerated(EnumType.STRING)// En base de donnée ca va creer un varchar sin on met pas l'annoation avec la convertir en int
+	@Column(length=8)// création d'un attribut varchar  civilite de taille 8 on peut specifier le nom de la colonne (name="civ")
+   @NotNull // @NotNull(message="Il faut remplir les champs vides")
 	private Civilite civilite;
 	// @NotBlank
 	@Pattern(regexp = "(?i)[a-z]{2,50}", message = "{com.formation.annuaire.constraint.nom.message}") // i ignorer la
-																										// casse
+	@Column(length=50)																									// casse
 	private String nom;
 	// @NotBlank
 	@Pattern(regexp = "(?i)[a-z\\- ]{2,100}", message = "{com.formation.annuaire.constraint.nom.message}")
+	@Column(length=100)
 	private String prenom;
 	// @Pattern(regexp = "^([0-9]{2})/([0-9]{2})/([0-9]{4})$", message =
 	// "{com.formation.annuaire.constraint.tel.message}")
 	@NotBlank
+	@Column(columnDefinition="date", name="birthday")
 	private String dateDeNaissance;
-	@Pattern(regexp = "^(\\+[0-9]|[0]{2})[0-9] {6,14}(?:x.+)?$", message = "{com.formation.annuaire.constraint.tel.message}")
+	@NotBlank
+	//@Pattern(regexp = "^(\\+[0-9]|[0]{2})[0-9] {6,14}(?:x.+)?$", message = "{com.formation.annuaire.constraint.tel.message}")
 	private String tel;
-	@Pattern(regexp = "\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b", message = "{com.formation.annuaire.constraint.email.message}")
+	@NotBlank
+	//@Pattern(regexp = "\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b", message = "{com.formation.annuaire.constraint.email.message}")
+	@Column(length=100)
 	private String email;
-	@Pattern(regexp = "^(([0-8][0-9])|(9[0-5])|(2[ab]))[0-9]{3}$", message = "{com.formation.annuaire.constraint.cp.message}")
+	@NotBlank
+	//@Pattern(regexp = "^(([0-8][0-9])|(9[0-5])|(2[ab]))[0-9]{3}$", message = "{com.formation.annuaire.constraint.cp.message}")
+	@Column(length=5)
 	private String cp;
-	@Pattern(regexp = "(?i)[a-z -] {1,45}", message = "{com.formation.annuaire.constraint.nom.message}")
+	@NotBlank
+	//@Pattern(regexp = "(?i)[a-z -] {1,45}", message = "{com.formation.annuaire.constraint.nom.message}")
+	@Column(length=50)
 	private String ville;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 	public Carnet() {
 	}
 
-	public Carnet(int id, Civilite civilite, String nom, String prenom, String dateDeNaissance, String tel,
+	public Carnet(Long id, Civilite civilite, String nom, String prenom, String dateDeNaissance, String tel,
 			String email, String cp, String ville) {
 		super();
 		this.id = id;
@@ -51,7 +70,7 @@ public class Carnet {
 		this.ville = ville;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

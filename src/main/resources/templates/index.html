@@ -3,12 +3,31 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Welcome</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#locales").change(function () {
+        var selectedOption = $('#locales').val();
+        if (selectedOption != ''){
+            window.location.replace('international?lang=' + selectedOption);
+        }
+    });
+});
+</script>
 </head>
 <body>
-	<h1>Gestion d'Annuaire</h1>
+	<span th:text="#{lang.change}"></span>:
+	<select id="locales">
+		<option value=""></option>
+		<option value="en" th:text="#{lang.eng}"></option>
+		<option value="fr" th:text="#{lang.fr}"></option>
+	</select>
+	<h1 th:text="#{bienvenue}"></h1>
 	<h2 th:text="${name}">Hello there is no parameters</h2>
-	<a th:href="@{/carnetshtml}">Liste Carnets</a>
-	<a th:href="@{/formulaire}">Ajouter un carnet</a>
-	<a th:href="@{/carnets}">Supprimer un carnet</a>
+	<a th:href="@{/carnetshtml}" th:text="#{liste}" > Liste Carnets</a>
+	<a th:href="@{/carnet}" th:text="#{ajout}">Ajouter un carnet</a>
+	<a th:href="@{/carnet}" th:text="#{modif}">Modifier un carnet</a>
+	<a th:href="@{/carnet}" th:text="#{supp}" >Supprimer un carnet</a>
 </body>
 </html>
